@@ -1,3 +1,24 @@
+<?php 
+//start the session
+SESSION_START();
+
+//check if the session variables are set or merong laman ang session variable or naga exist sila
+// this is to check if the account is still logged in or not
+if (isset($_SESSION['ses_username'])===true){
+    header("Location: index.php?logfirst");
+    
+} else if (isset($_REQUEST['logout'])===true){
+    session_destroy();
+    header("Location: index.php?logout");
+}
+
+
+?>
+
+
+
+
+
 <!doctype html>
                         <html>
                             <head>
@@ -32,13 +53,17 @@ body {
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="images/photo-profile.avif" alt="..." width="150" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit Profile</a>
+                    <div class="profile mr-3"><img src="images/photo-profile.avif" alt="..." width="150" class="rounded mb-2 img-thumbnail">
+
+                        <a href="?logout" class="btn btn-outline-dark btn-sm btn-block">Sig Out</a>
 
 
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">Ryan Clifford L. Perez</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Marinduque PH
+                        <h4 class="mt-0 mb-0"> <?php echo $_SESSION['ses-fullname']; ?> </h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+
+                            <?php echo $_SESSION['ses-address']; ?>
                          </p>
                     </div>
                 </div>
@@ -46,29 +71,29 @@ body {
             <div class="bg-light p-4 d-flex justify-content-end text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">21,150</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                        <h5 class="font-weight-bold mb-0 d-block">124</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">756,450</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        <h5 class="font-weight-bold mb-0 d-block">1.2M</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        <h5 class="font-weight-bold mb-0 d-block">1</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>
                 </ul>
             </div>
 
             <div class="px-4 py-3">
-                <h5 class="mb-0">Expertise </h5>
+                <h5 class="mb-0">Hobbies </h5>
                 <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0">Full-stack Web Developer</p>
-                    <p class="font-italic mb-0">Mobile App Developer</p>
-                    <p class="font-italic mb-0">Photographer/Videographer</p>
+                    <p class="font-italic mb-0">Basketball</p>
+                    <p class="font-italic mb-0">Travelling</p>
+                    <p class="font-italic mb-0">Photography</p>
                 </div>
             </div>
 
             <div class="py-4 px-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Recent Captures</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+                    <h5 class="mb-0">Recent Post</h5><a href="#" class="btn btn-link text-muted">Show all</a>
                 </div>
                 <div class="row">
                     
